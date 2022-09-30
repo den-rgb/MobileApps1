@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bdea296-a660-4d1c-985d-4e36196c0118" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/controller/GameController.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/models/GameLIbraryInt.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/models/LibMemStore.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Game.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/models/Game.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/GameLibView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/views/GameLibView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/main/main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/controller/GameController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/controller/GameController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/main/main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/main/main.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

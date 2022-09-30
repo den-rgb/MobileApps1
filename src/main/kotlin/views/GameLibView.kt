@@ -60,4 +60,39 @@ class GameLibView {
         print( "New Game price --> ")
         return readLine()!!.toFloat()
     }
+
+    fun removeGameView(): Int {
+        println("Which game would you like to remove [id]")
+        print("------> ")
+        return readLine()!!.toInt()
+    }
+
+    fun searchGameView(): Int{
+        println()
+        println(" Search by: ")
+        println("----1. ID ")
+        println("----2. Name ")
+        println("----3. Price ")
+        println("----4. Category ")
+        println("----5. Back ")
+        return readLine()!!.toInt()
+    }
+
+    fun searchNameView(): String{
+        println()
+        println("-----Name: ")
+        return readLine()!!
+    }
+
+    fun searchIdView(): Int{
+        println()
+        println("-----Id: ")
+        return readLine()!!.toInt()
+    }
+
+    fun searchPriceView(): Float{
+        println()
+        println("-----Price: ")
+        return readLine()!!.toFloat()
+    }
 }

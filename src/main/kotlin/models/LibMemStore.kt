@@ -20,6 +20,10 @@ class LibMemStore: GameLIbraryInt {
         return games.find { p -> p.id == id }
     }
 
+    override fun findByPrice(price: Float): Game? {
+        return games.find { p -> p.price == price }
+    }
+
     override fun findByName(name: String): Game? {
         return games.find { p -> p.name == name }
     }
