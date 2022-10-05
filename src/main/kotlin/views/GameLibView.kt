@@ -111,13 +111,9 @@ class GameLibView {
         return readLine()!!.toFloat()
     }
 
-    fun searchCategoryView(): Int{
+    fun searchCategoryView(): String{
         println("Choose a Category")
-        val input = readln()
-        if (input.intOrString())
-        return readLine()!!.toInt()
+        return readLine()!!
     }
-
-    fun String.intOrString() = toIntOrNull() ?: this
 
 }

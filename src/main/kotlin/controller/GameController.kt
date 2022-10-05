@@ -33,23 +33,29 @@ class GameController {
     fun addGame(){
         val newGame= Game()
         gameView.addGameView(newGame)
-        chooseCategory(newGame)
+        chosenCategory(chooseCategory(),newGame)
         games.create(newGame)
 
     }
 
-    fun chooseCategory(game: Game) {
+    fun chooseCategory(): Category {
         listCategories()
         val choice = gameView.chooseCategoryView()
+        var cat = Category.None
         when(choice){
-            1 -> game.category = Category.Action
-            2 -> game.category = Category.Shooter
-            3 -> game.category = Category.RPG
-            4 -> game.category = Category.Sandbox
-            5 -> game.category = Category.Puzzle
-            6 -> game.category = Category.Sport
-            7 -> game.category = Category.None
+            1 -> cat = Category.Action
+            2 -> cat  = Category.Shooter
+            3 -> cat  = Category.RPG
+            4 -> cat  = Category.Sandbox
+            5 -> cat  = Category.Puzzle
+            6 -> cat  = Category.Sport
+            7 -> cat  = Category.None
         }
+        return cat
+    }
+
+    fun chosenCategory(category: Category,game: Game){
+        game.category = category
     }
 
     fun listCategories(){
@@ -96,7 +102,7 @@ class GameController {
     }
 
     fun updateCategory(game: Game){
-        chooseCategory(game)
+        chooseCategory()                                //TODO
         print( "Successfully Updated Game Category")
     }
 
@@ -122,17 +128,17 @@ class GameController {
                 1 -> println(games.findByID(gameView.searchIdView()))
                 2 -> println(games.findByName(gameView.searchNameView()))
                 3 -> println(games.findByPrice(gameView.searchPriceView()))
-                4 -> listCategories()
+                4 -> searchByCategory()
                 5 -> menu()
             }
         }
     }
 
     fun searchByCategory(){
-        listCategories()
+
+        println(games.findByCategory(chooseCategory()))
 
     }
-
 
 }
 

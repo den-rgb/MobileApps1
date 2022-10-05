@@ -8,7 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/controller/GameController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/controller/GameController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/models/Game.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/models/Game.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/models/GameLIbraryInt.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/models/GameLIbraryInt.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/models/LibMemStore.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/models/LibMemStore.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/views/GameLibView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/views/GameLibView.kt" afterDir="false" />
