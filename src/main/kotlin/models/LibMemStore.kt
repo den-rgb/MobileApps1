@@ -24,6 +24,10 @@ class LibMemStore: GameLIbraryInt {
         return games.find { p -> p.price == price }
     }
 
+//    override fun findByCategory(category: Int): Game? {
+//        return games.find { p -> p.category == category }
+//    }
+
     override fun findByName(name: String): Game? {
         return games.find { p -> p.name == name }
     }

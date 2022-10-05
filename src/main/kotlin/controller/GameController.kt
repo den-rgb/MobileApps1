@@ -1,5 +1,6 @@
 package controller
 
+import models.Category
 import models.Game
 import models.LibMemStore
 import org.setu.placemark.*
@@ -32,14 +33,39 @@ class GameController {
     fun addGame(){
         val newGame= Game()
         gameView.addGameView(newGame)
+        chooseCategory(newGame)
         games.create(newGame)
 
+    }
+
+    fun chooseCategory(game: Game) {
+        listCategories()
+        val choice = gameView.chooseCategoryView()
+        when(choice){
+            1 -> game.category = Category.Action
+            2 -> game.category = Category.Shooter
+            3 -> game.category = Category.RPG
+            4 -> game.category = Category.Sandbox
+            5 -> game.category = Category.Puzzle
+            6 -> game.category = Category.Sport
+            7 -> game.category = Category.None
+        }
+    }
+
+    fun listCategories(){
+        gameView.listCategoriesView()
+        val size = Category.values().sortedArray()
+        var index = 1
+        for(c in size) {
+            println("----" +index+ ": " + c)
+            index++
+        }
     }
 
     fun listGames(){
         gameView.listView()
         for (g in games.games){
-            println("-------> "+g.name  +" --- $" + g.price + " --- id: " + g.id)
+            println("-------> "+g.name  +" --- $" + g.price + " --- id: " + g.id + " --- category: " + g.category)
         }
     }
 
@@ -52,7 +78,8 @@ class GameController {
                 when (update) {
                 1 -> updateName(games.findByID(id)!!)
                 2 -> updatePrice(games.findByID(id)!!)
-                3 -> menu()
+                3 -> updateCategory(games.findByID(id)!!)
+                4 -> menu()
                 }
             }
         }
@@ -66,6 +93,11 @@ class GameController {
     fun updatePrice(game: Game){
         game.price = gameView.updatePriceView()
         print( "Successfully Updated Game Price")
+    }
+
+    fun updateCategory(game: Game){
+        chooseCategory(game)
+        print( "Successfully Updated Game Category")
     }
 
     fun removeGame(){
@@ -90,10 +122,18 @@ class GameController {
                 1 -> println(games.findByID(gameView.searchIdView()))
                 2 -> println(games.findByName(gameView.searchNameView()))
                 3 -> println(games.findByPrice(gameView.searchPriceView()))
+                4 -> listCategories()
                 5 -> menu()
             }
         }
     }
 
+    fun searchByCategory(){
+        listCategories()
+
+    }
+
 
 }
+
+
