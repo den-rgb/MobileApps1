@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="models.LibMemStoreTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-10-06T13:27:29" hostname="denis-pc" time="0.027">
+  <properties/>
+  <testcase name="create()" classname="models.LibMemStoreTest" time="0.027"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[[Test worker] INFO models.LibMemStore - Game(name=COD, id=1, price=20.0, category=Action)
+[Test worker] INFO models.LibMemStore - Game(name=Minecraft, id=2, price=40.0, category=Action)
+[Test worker] INFO models.LibMemStore - Game(name=FIFA, id=3, price=40.0, category=Sport)
+[Test worker] INFO models.LibMemStore - Game(name=Mario, id=8448, price=25.0, category=Sandbox)
+]]></system-err>
+</testsuite>
