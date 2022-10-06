@@ -20,12 +20,22 @@ class LibMemStore: GameLIbraryInt {
         return games.find { p -> p.id == id }
     }
 
-    override fun findByPrice(price: Float): Game? {
-        return games.find { p -> p.price == price }
+    override fun findByPrice(price: Float): ArrayList<Game> {
+        val pricedGames: ArrayList<Game> = arrayListOf()
+        games.forEach{
+            if(it.price == price)
+                pricedGames.add(it)
+        }
+        return pricedGames
     }
 
-    override fun findByCategory(category: Category): Game? {
-        return games.find { p -> p.category == category }
+    override fun findByCategory(category: Category): ArrayList<Game> {
+        val categorizedGames: ArrayList<Game> = arrayListOf()
+        games.forEach{
+            if(it.category == category)
+                categorizedGames.add(it)
+        }
+        return categorizedGames
     }
 
     override fun findByName(name: String): Game? {

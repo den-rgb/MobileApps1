@@ -111,9 +111,4 @@ class GameLibView {
         return readLine()!!.toFloat()
     }
 
-    fun searchCategoryView(): String{
-        println("Choose a Category")
-        return readLine()!!
-    }
-
 }

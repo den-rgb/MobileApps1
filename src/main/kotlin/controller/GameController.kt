@@ -102,7 +102,7 @@ class GameController {
     }
 
     fun updateCategory(game: Game){
-        chooseCategory()                                //TODO
+        chosenCategory(chooseCategory(),game)
         print( "Successfully Updated Game Category")
     }
 
@@ -127,18 +127,13 @@ class GameController {
             when (input) {
                 1 -> println(games.findByID(gameView.searchIdView()))
                 2 -> println(games.findByName(gameView.searchNameView()))
-                3 -> println(games.findByPrice(gameView.searchPriceView()))
-                4 -> searchByCategory()
+                3 -> for(g in games.findByPrice(gameView.searchPriceView())){println("Name: "+g.name + " --- Category: " + g.category + " --- id: " +g.id)}
+                4 -> for(g in games.findByCategory(chooseCategory())){println("Name: "+g.name + " --- Price: " + g.price + " --- id: " +g.id)}
                 5 -> menu()
             }
         }
     }
 
-    fun searchByCategory(){
-
-        println(games.findByCategory(chooseCategory()))
-
-    }
 
 }
 
