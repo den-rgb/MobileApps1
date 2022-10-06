@@ -1,5 +1,6 @@
 package controller
 
+import models.Category
 import models.Game
 import models.LibMemStore
 import org.setu.placemark.*
@@ -32,14 +33,45 @@ class GameController {
     fun addGame(){
         val newGame= Game()
         gameView.addGameView(newGame)
+        chosenCategory(chooseCategory(),newGame)
         games.create(newGame)
 
+    }
+
+    fun chooseCategory(): Category {
+        listCategories()
+        val choice = gameView.chooseCategoryView()
+        var cat = Category.None
+        when(choice){
+            1 -> cat = Category.Action
+            2 -> cat  = Category.Shooter
+            3 -> cat  = Category.RPG
+            4 -> cat  = Category.Sandbox
+            5 -> cat  = Category.Puzzle
+            6 -> cat  = Category.Sport
+            7 -> cat  = Category.None
+        }
+        return cat
+    }
+
+    fun chosenCategory(category: Category,game: Game){
+        game.category = category
+    }
+
+    fun listCategories(){
+        gameView.listCategoriesView()
+        val size = Category.values().sortedArray()
+        var index = 1
+        for(c in size) {
+            println("----" +index+ ": " + c)
+            index++
+        }
     }
 
     fun listGames(){
         gameView.listView()
         for (g in games.games){
-            println("-------> "+g.name  +" --- $" + g.price + " --- id: " + g.id)
+            println("-------> "+g.name  +" --- $" + g.price + " --- id: " + g.id + " --- category: " + g.category)
         }
     }
 
@@ -52,7 +84,8 @@ class GameController {
                 when (update) {
                 1 -> updateName(games.findByID(id)!!)
                 2 -> updatePrice(games.findByID(id)!!)
-                3 -> menu()
+                3 -> updateCategory(games.findByID(id)!!)
+                4 -> menu()
                 }
             }
         }
@@ -66,6 +99,11 @@ class GameController {
     fun updatePrice(game: Game){
         game.price = gameView.updatePriceView()
         print( "Successfully Updated Game Price")
+    }
+
+    fun updateCategory(game: Game){
+        chosenCategory(chooseCategory(),game)
+        print( "Successfully Updated Game Category")
     }
 
     fun removeGame(){
@@ -89,7 +127,8 @@ class GameController {
             when (input) {
                 1 -> println(games.findByID(gameView.searchIdView()))
                 2 -> println(games.findByName(gameView.searchNameView()))
-                3 -> println(games.findByPrice(gameView.searchPriceView()))
+                3 -> for(g in games.findByPrice(gameView.searchPriceView())){println("Name: "+g.name + " --- Category: " + g.category + " --- id: " +g.id)}
+                4 -> for(g in games.findByCategory(chooseCategory())){println("Name: "+g.name + " --- Price: " + g.price + " --- id: " +g.id)}
                 5 -> menu()
             }
         }
@@ -97,3 +136,5 @@ class GameController {
 
 
 }
+
+

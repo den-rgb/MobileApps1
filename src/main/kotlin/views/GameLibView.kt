@@ -1,5 +1,6 @@
 package views
 
+import models.Category
 import models.Game
 import org.setu.placemark.box
 import org.setu.placemark.red
@@ -32,6 +33,15 @@ class GameLibView {
 
     }
 
+    fun chooseCategoryView()  :Int{
+        print(" --------> ")
+        return readLine()!!.toInt()
+    }
+
+    fun listCategoriesView(){
+        println(" --- Categories --- ")
+    }
+
     fun listView(){
         println("---------- Your Games --------------")
         println()
@@ -47,7 +57,8 @@ class GameLibView {
         println(" What would you like to update?? ")
         println( " ---> 1: Name")
         println( " ---> 2: Price")
-        println( " ---> 3: Back")
+        println( " ---> 3: Category")
+        println( " ---> 4: Back")
         return readLine()!!.toInt()
     }
 
@@ -59,6 +70,10 @@ class GameLibView {
     fun updatePriceView(): Float{
         print( "New Game price --> ")
         return readLine()!!.toFloat()
+    }
+
+    fun updateCategoryView(){
+        print( "New Game Category --> ")
     }
 
     fun removeGameView(): Int {
@@ -95,4 +110,5 @@ class GameLibView {
         println("-----Price: ")
         return readLine()!!.toFloat()
     }
+
 }
