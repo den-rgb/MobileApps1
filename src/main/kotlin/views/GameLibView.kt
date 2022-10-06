@@ -4,6 +4,7 @@ import models.Category
 import models.Game
 import org.setu.placemark.box
 import org.setu.placemark.red
+import java.util.*
 
 class GameLibView {
 
@@ -26,10 +27,22 @@ class GameLibView {
     fun addGameView(game: Game){
         println(box +"Enter game details...." )
         print("Name: ")
-        game.name = readln()
+        val name = readln()
+        if (name!=""){
+            game.name = name.uppercase(Locale.getDefault())
+        }else{
+            println("Please enter a valid name")
+            addGameView(game)
+        }
 
         print("Price: ")
-        game.price = readLine()!!.toFloat()
+        val price = readLine()!!.toFloat()
+        if (price>0.0){
+            game.price = price
+        }else{
+            println("Please enter a valid price")
+            addGameView(game)
+        }
 
     }
 
@@ -70,10 +83,6 @@ class GameLibView {
     fun updatePriceView(): Float{
         print( "New Game price --> ")
         return readLine()!!.toFloat()
-    }
-
-    fun updateCategoryView(){
-        print( "New Game Category --> ")
     }
 
     fun removeGameView(): Int {
