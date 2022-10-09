@@ -2,13 +2,14 @@ package controller
 
 import models.Category
 import models.Game
+import models.JsonMemStore
 import models.LibMemStore
 import org.setu.placemark.*
 import views.GameLibView
 import kotlin.system.exitProcess
 
 class GameController {
-    val games = LibMemStore()
+    val games = JsonMemStore()
     val gameView = GameLibView()
 
     fun menu(){
