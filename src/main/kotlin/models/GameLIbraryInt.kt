@@ -7,4 +7,12 @@ interface GameLIbraryInt {
         fun findByCategory(category: Category): ArrayList<Game>
         fun findByName(name: String): Game?
         fun create(game: Game)
+        fun remove(game:Game)
+        fun clear()
+        fun updateName(id: Int)
+        fun updatePrice(id: Int)
+        fun updateCategory(id: Int)
+        fun chooseCategory(): Category
+        fun listCategories()
+
 }
