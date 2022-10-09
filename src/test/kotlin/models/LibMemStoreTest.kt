@@ -1,7 +1,7 @@
 package models
 
 import org.junit.jupiter.api.Assertions.*
-import org.setu.placemark.games
+
 
 internal class LibMemStoreTest {
     var memStore = LibMemStore()

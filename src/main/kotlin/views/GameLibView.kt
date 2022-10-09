@@ -85,6 +85,10 @@ class GameLibView {
         return readLine()!!.toFloat()
     }
 
+    fun chosenCategoryView(category: Category,game: Game){
+        game.category = category
+    }
+
     fun removeGameView(): Int {
         println("Which game would you like to remove [id]")
         print("------> ")
