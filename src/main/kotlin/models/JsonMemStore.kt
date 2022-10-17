@@ -16,9 +16,6 @@ val JSON_FILE = "games.json"
 val gsonBuilder = GsonBuilder().setPrettyPrinting().create()
 val listType = object : TypeToken<java.util.ArrayList<Game>>() {}.type
 
-
-
-
 class JsonMemStore : GameLIbraryInt {
 
     var games = mutableListOf<Game>()

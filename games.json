@@ -16,5 +16,11 @@
     "id": 9394,
     "price": 10.0,
     "category": "Sandbox"
+  },
+  {
+    "name": "Dying Light",
+    "id": 1013,
+    "price": 60.0,
+    "category": "Shooter"
   }
 ]

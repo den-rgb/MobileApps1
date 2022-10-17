@@ -15,7 +15,6 @@ internal fun getId(): Int {
 class LibMemStore: GameLIbraryInt {
     val games = ArrayList<Game>()
     val gameView = GameLibView()
-    val controller = GameController()
     override fun findAll(): List<Game> {
         return games
     }
