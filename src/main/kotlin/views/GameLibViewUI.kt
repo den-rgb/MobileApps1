@@ -54,19 +54,8 @@ class MasterView: View() {
 
                    action {
                        lastPressed = 1
-                       textA.text = ""
-                       nam.isVisible = true
-                       pri.isVisible = true
-                       cat.isVisible = true
-                       submit.isVisible = true
-                       textA.appendText("--- Categories ---\n")
-                       val size = Category.values().sortedArray()
-                       var index = 1
-                       for(c in size) {
-                           textA.appendText("----" +index+ ": " + c + "\n")
-                           index++
-                       }
-
+                       listCat()
+                        show()
                    }
                }
                button("Update Game") {
@@ -77,7 +66,11 @@ class MasterView: View() {
                        backgroundImage+=File("src/black.jpg").toURI()
                    }
                    action {
-
+                       lastPressed = 3
+                       idBox.isVisible = true
+                       submit.isVisible = true
+                       show()
+                       listAll()
                    }
                }
                button("List Collection") {
@@ -88,10 +81,7 @@ class MasterView: View() {
                        backgroundImage+=File("src/black.jpg").toURI()
                    }
                    action {
-                       textA.text = ""
-                       for (g in games.games.games){
-                           textA.appendText(g.name  +" --- $" + g.price + " --- " + g.id + " --- " + g.category + "\n")
-                       }
+                       listAll()
                    }
                }
                button("Remove Game") {
@@ -105,10 +95,7 @@ class MasterView: View() {
                         lastPressed = 2
                         idBox.isVisible = true
                        submit.isVisible = true
-                       textA.text = ""
-                       for (g in games.games.games){
-                           textA.appendText(g.name  +" --- " + g.id + "\n")
-                       }
+                       listAll()
                    }
                }
                button("Clear library") {
@@ -271,15 +258,29 @@ class MasterView: View() {
                                            modGame.price = inPrice.text.toFloat()
                                            modGame.category = getCat()
                                            games.games.create(modGame)
-
+                                           textA.appendText("Successfully added " + modGame.name)
                                        }
                                        else if(lastPressed ==2){
                                            games.games.findByID(inId.text.toInt())?.let { games.games.remove(it) }
+                                           textA.appendText("Successfully deleted selected game")
                                        }
-                                       nam.isVisible = false
-                                       pri.isVisible = false
-                                       cat.isVisible = false
-                                       submit.isVisible = false
+                                       else if(lastPressed==3){
+                                           val updated = games.games.findByID(inId.text.toInt())
+                                           if (updated != null) {
+                                               updated.name = inName.text
+                                           }
+                                           if (updated != null) {
+                                               updated.price = inPrice.text.toFloat()
+                                           }
+                                           if (updated != null) {
+                                               updated.category = getCat()
+                                           }
+
+                                           if (updated != null) {
+                                               textA.appendText("Successfully updated " + updated.name)
+                                           }
+                                       }
+                                       hide()
                                    }
                                }
 
@@ -321,7 +322,39 @@ class MasterView: View() {
        }
 
    }
+    fun show(){
 
+        textA.text = ""
+        nam.isVisible = true
+        pri.isVisible = true
+        cat.isVisible = true
+        submit.isVisible = true
+    }
+
+    fun hide(){
+        nam.isVisible = false
+        pri.isVisible = false
+        cat.isVisible = false
+        submit.isVisible = false
+        idBox.isVisible = false
+    }
+
+    fun listAll(){
+        textA.text = ""
+        for (g in games.games.games){
+            textA.appendText(g.name  +" --- $" + g.price + " --- " + g.id + " --- " + g.category + "\n")
+        }
+    }
+
+    fun listCat(){
+        textA.appendText("--- Categories ---\n")
+        val size = Category.values().sortedArray()
+        var index = 1
+        for(c in size) {
+            textA.appendText("----" +index+ ": " + c + "\n")
+            index++
+        }
+    }
     fun getCat(): Category {
         var cat = Category.None
         when(inCategory.text.toString().toInt()){
