@@ -22,5 +22,11 @@
     "id": 1013,
     "price": 60.0,
     "category": "Shooter"
+  },
+  {
+    "name": "Tomb Raider",
+    "id": 6807,
+    "price": 10.0,
+    "category": "Puzzle"
   }
 ]

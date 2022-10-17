@@ -16,6 +16,7 @@ import models.Game
 import models.JsonMemStore
 import tornadofx.Stylesheet.Companion.customcolorControlsBackground
 import tornadofx.Stylesheet.Companion.left
+import java.awt.event.ActionListener
 import java.io.File
 
 
@@ -26,11 +27,14 @@ class MasterView: View() {
     var inName = textfield()
     var inPrice = textfield()
     var inCategory = textfield()
+    var inId = textfield()
     var submit = button()
     var nam = vbox()
     var pri = vbox()
     var cat = vbox()
+    var idBox = vbox()
     val modGame = Game()
+    var lastPressed = 0
 
 
    override val root = borderpane {
@@ -49,7 +53,8 @@ class MasterView: View() {
                    }
 
                    action {
-
+                       lastPressed = 1
+                       textA.text = ""
                        nam.isVisible = true
                        pri.isVisible = true
                        cat.isVisible = true
@@ -83,6 +88,7 @@ class MasterView: View() {
                        backgroundImage+=File("src/black.jpg").toURI()
                    }
                    action {
+                       textA.text = ""
                        for (g in games.games.games){
                            textA.appendText(g.name  +" --- $" + g.price + " --- " + g.id + " --- " + g.category + "\n")
                        }
@@ -94,6 +100,15 @@ class MasterView: View() {
                    textFill = Color.YELLOW
                    style{
                        backgroundImage+=File("src/black.jpg").toURI()
+                   }
+                   action {
+                        lastPressed = 2
+                        idBox.isVisible = true
+                       submit.isVisible = true
+                       textA.text = ""
+                       for (g in games.games.games){
+                           textA.appendText(g.name  +" --- " + g.id + "\n")
+                       }
                    }
                }
                button("Clear library") {
@@ -251,11 +266,40 @@ class MasterView: View() {
                                        backgroundImage+=File("src/black.jpg").toURI()
                                    }
                                    action {
-                                       modGame.name = inName.text
-                                       modGame.price = inPrice.text.toFloat()
-                                       modGame.category = getCat()
-                                       games.games.create(modGame)
+                                       if(lastPressed ==1) {
+                                           modGame.name = inName.text
+                                           modGame.price = inPrice.text.toFloat()
+                                           modGame.category = getCat()
+                                           games.games.create(modGame)
+
+                                       }
+                                       else if(lastPressed ==2){
+                                           games.games.findByID(inId.text.toInt())?.let { games.games.remove(it) }
+                                       }
+                                       nam.isVisible = false
+                                       pri.isVisible = false
+                                       cat.isVisible = false
+                                       submit.isVisible = false
                                    }
+                               }
+
+
+                           }
+                       }
+                       idBox = vbox {
+                           vboxConstraints {
+                               isVisible = false
+                               paddingLeft = 100
+                               paddingRight = -105
+                               paddingTop = 25
+                               label {
+                                   text = "Id:"
+                                   textFill = Color.YELLOW
+                               }
+
+
+                               inId = textfield() {
+                                   textProperty().addListener { obs, old, new -> println("You typed: " + new) }
                                }
 
 
