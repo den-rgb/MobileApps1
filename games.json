@@ -1,32 +1,14 @@
 [
   {
-    "name": "FIFA",
-    "id": 4364,
-    "price": 60.0,
-    "category": "Sport"
-  },
-  {
-    "name": "MINECRAFT",
-    "id": 3546,
+    "name": "Minecraft",
+    "id": 8781,
     "price": 20.0,
     "category": "Sandbox"
   },
   {
-    "name": "GARRYS MOD",
-    "id": 9394,
-    "price": 10.0,
-    "category": "Sandbox"
-  },
-  {
-    "name": "Dying Light",
-    "id": 1013,
+    "name": "FIFA",
+    "id": 3790,
     "price": 60.0,
-    "category": "Shooter"
-  },
-  {
-    "name": "Tomb Raider",
-    "id": 6807,
-    "price": 10.0,
-    "category": "Puzzle"
+    "category": "Sport"
   }
 ]

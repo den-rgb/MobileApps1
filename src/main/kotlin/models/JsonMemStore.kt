@@ -27,6 +27,14 @@ class JsonMemStore : GameLIbraryInt {
             deserialize()
         }
     }
+    override fun sortById(): List<Game> {
+        games.sortBy { it.id }
+        return games
+    }
+    override fun sortByPrice() : List<Game>{
+        games.sortBy { it.price }
+        return games
+    }
 
     override fun findAll(): List<Game> {
         return games

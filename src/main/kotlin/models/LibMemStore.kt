@@ -19,8 +19,17 @@ class LibMemStore: GameLIbraryInt {
         return games
     }
 
+    override fun sortById(): List<Game> {
+        games.sortBy { it.id }
+        return games
+    }
     override fun findByID(id: Int): Game? {
         return games.find { p -> p.id == id }
+    }
+
+    override fun sortByPrice() : List<Game>{
+       games.sortBy { it.price }
+        return games
     }
 
     override fun findByPrice(price: Float): ArrayList<Game> {

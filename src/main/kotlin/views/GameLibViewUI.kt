@@ -3,6 +3,7 @@ package views
 
 import controller.GameController
 import javafx.scene.control.Button
+import javafx.scene.control.ToggleGroup
 import javafx.scene.layout.Background
 import javafx.scene.layout.VBox
 import tornadofx.*
@@ -33,7 +34,7 @@ class MasterView: View() {
     var pri = vbox()
     var cat = vbox()
     var idBox = vbox()
-    val modGame = Game()
+    var sortBut = button()
     var lastPressed = 0
 
 
@@ -56,6 +57,7 @@ class MasterView: View() {
                        lastPressed = 1
                        listCat()
                         showAll()
+                       sortBut.isVisible = false
                    }
                }
                button("Update Game") {
@@ -71,6 +73,7 @@ class MasterView: View() {
                        submit.isVisible = true
                        showAll()
                        listAll()
+                       sortBut.isVisible = false
                    }
                }
                button("List Collection") {
@@ -82,6 +85,9 @@ class MasterView: View() {
                    }
                    action {
                        listAll()
+
+                       lastPressed = 7
+                       sortBut.isVisible = true
                        hideAll()
                    }
                }
@@ -100,6 +106,7 @@ class MasterView: View() {
                        pri.isVisible = false
                        cat.isVisible = false
                        listAll()
+                       sortBut.isVisible = false
 
                    }
                }
@@ -115,6 +122,8 @@ class MasterView: View() {
                        games.clearLib()
                        textA.text = "Library is now empty...."
                        hideAll()
+                       sortBut.isVisible = false
+
                    }
                }
                button("Search Library") {
@@ -129,6 +138,7 @@ class MasterView: View() {
                        textA.text = "Search for a game"
                        idBox.isVisible = true
                        submit.isVisible = true
+                       sortBut.isVisible = false
                        listCat()
                        showAll()
                    }
@@ -186,19 +196,33 @@ class MasterView: View() {
                     label {
                         text = "Pac Games"
                         textFill = Color.YELLOW
-                        //fontWeight += FontWeight.BOLD
                         font = Font(40.0)
                         paddingTop = -255
                         paddingLeft = 50.0
                     }
 
+                     sortBut =  button("Sort by Price") {
+                        paddingBottom = -200
+                        isVisible = false
+                        textFill = Color.YELLOW
+                        action {
+                            games.games.sortByPrice()
+                            listAll()
+                        }
+
+                    }
+
 
 
                     }
 
 
 
+
            }
+
+
+
 
            bottom = gridpane {
                vbox  {
@@ -268,17 +292,18 @@ class MasterView: View() {
                                    }
                                    action {
                                        if(lastPressed ==1) {
+                                           val modGame = Game()
                                            modGame.name = inName.text
                                            modGame.price = inPrice.text.toFloat()
                                            modGame.category = getCat()
                                            games.games.create(modGame)
                                            textA.appendText("Successfully added " + modGame.name)
-                                           hideAll()
+
                                        }
                                        else if(lastPressed ==2){
                                            games.games.findByID(inId.text.toInt())?.let { games.games.remove(it) }
                                            textA.appendText("Successfully deleted selected game")
-                                           hideAll()
+
                                        }
                                        else if(lastPressed==3){
                                            val updated = games.games.findByID(inId.text.toInt())
@@ -338,6 +363,7 @@ class MasterView: View() {
                                            }
                                        }
                                        hideAll()
+                                       sortBut.isVisible = false
                                    }
                                }
 
