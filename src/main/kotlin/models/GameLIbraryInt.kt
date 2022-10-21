@@ -14,5 +14,7 @@ interface GameLIbraryInt {
         fun updateCategory(id: Int)
         fun chooseCategory(): Category
         fun listCategories()
+        fun sortById(): List<Game>
+        fun sortByPrice(): List<Game>
 
 }

@@ -16,9 +16,6 @@ val JSON_FILE = "games.json"
 val gsonBuilder = GsonBuilder().setPrettyPrinting().create()
 val listType = object : TypeToken<java.util.ArrayList<Game>>() {}.type
 
-
-
-
 class JsonMemStore : GameLIbraryInt {
 
     var games = mutableListOf<Game>()
@@ -29,6 +26,14 @@ class JsonMemStore : GameLIbraryInt {
         if (exists(JSON_FILE)) {
             deserialize()
         }
+    }
+    override fun sortById(): List<Game> {
+        games.sortBy { it.id }
+        return games
+    }
+    override fun sortByPrice() : List<Game>{
+        games.sortBy { it.price }
+        return games
     }
 
     override fun findAll(): List<Game> {
